@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
+const { hashPassword } = require("../hooks/hashPassword");
 
 require("dotenv").config();
 
@@ -35,6 +36,7 @@ const schema = {
 const options = {
   hooks: {
     beforeCreate: hashPassword,
+    beforeUpdate: hashPassword,
   },
   sequelize,
   timestamps: false,

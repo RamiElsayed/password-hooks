@@ -33,6 +33,9 @@ const schema = {
 };
 
 const options = {
+  hooks: {
+    beforeCreate: hashPassword,
+  },
   sequelize,
   timestamps: false,
   freezeTableName: true,
